@@ -14,7 +14,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/torre")
-@CrossOrigin(origins = "http://localhost:8081")
+//@CrossOrigin(origins = "http://localhost:8081")
+@SuppressWarnings("unchecked")
 public class TorreController {
 
     @Autowired
