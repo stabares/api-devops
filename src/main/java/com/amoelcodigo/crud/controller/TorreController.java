@@ -17,7 +17,6 @@ import java.util.List;
 //@CrossOrigin(origins = "http://localhost:8081")
 @SuppressWarnings("unchecked")
 public class TorreController {
-
     @Autowired
     TorreService torreService;
 
@@ -29,12 +28,12 @@ public class TorreController {
     }
 
     @GetMapping("/detalleTorre/{idTorre}")
-    public ResponseEntity<Torre> torreById(@PathVariable("idTorre") int idTorre){
+    public ResponseEntity<Torre> torreById(@PathVariable("idTorre") String idTorre){
 
         if (!torreService.existsByIdTorre(idTorre))
             return new ResponseEntity(new Mensaje("No existe la torre"), HttpStatus.NOT_FOUND);
 
-        Torre torre = torreService.getTorre(idTorre).get();
+        Torre torre = torreService.getByIdTorre(idTorre).get();
         return new ResponseEntity(torre, HttpStatus.OK);
     }
 
@@ -70,10 +69,10 @@ public class TorreController {
     }
 
     @PutMapping("/actualizarTorre/{idTorre}")
-    public ResponseEntity<?> actualizarTorre(@PathVariable("idTorre") int idTorre, @RequestBody TorreDto torreDto){
+    public ResponseEntity<?> actualizarTorre(@PathVariable("idTorre") String idTorre, @RequestBody TorreDto torreDto){
 
         if (!torreService.existsByIdTorre(idTorre))
-        return new ResponseEntity(new Mensaje("No existe la torre"), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(new Mensaje("No existe la torre"), HttpStatus.NOT_FOUND);
 
         if (torreService.existsByNombreTorre(torreDto.getNombreTorre())
                 && torreService.getByNombreTorre(torreDto.getNombreTorre()).get().getIdTorre() != idTorre)
@@ -85,7 +84,7 @@ public class TorreController {
         if(torreDto.getCantidadAptos()<0 || (Integer) torreDto.getCantidadAptos() == null)
             return new ResponseEntity(new Mensaje("La cantidad de aptos debe ser mayor a 0"), HttpStatus.BAD_REQUEST);
 
-        Torre torre = torreService.getTorre(idTorre).get();
+        Torre torre = torreService.getByIdTorre(idTorre).get();
         torre.setNombreTorre(torreDto.getNombreTorre());
         torre.setCantidadAptos(torreDto.getCantidadAptos());
         torreService.saveTorre(torre);
@@ -93,7 +92,7 @@ public class TorreController {
     }
 
     @DeleteMapping("/borrarTorre/{idTorre}")
-    public ResponseEntity<?> borrarTorre(@PathVariable("idTorre") int idTorre){
+    public ResponseEntity<?> borrarTorre(@PathVariable("idTorre") String idTorre){
         if (!torreService.existsByIdTorre(idTorre))
             return new ResponseEntity(new Mensaje("No existe la torre"), HttpStatus.NOT_FOUND);
         torreService.deleteTorre(idTorre);

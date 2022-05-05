@@ -8,11 +8,12 @@ import java.util.Optional;
 
 @Repository
 public interface TorreRepository  extends MongoRepository<Torre, Integer> {
-        // Con @Repository le indico los metodos principales select
+    // Con @Repository le indico los metodos principales select
 
     //Convención sobre convicción
     Optional<Torre> findByNombreTorre(String nombreTorre);
-
+    Optional<Torre> findByIdTorre(String idTorre);
     boolean existsByNombreTorre(String nombreTorre);
+    boolean existsByIdTorre(String idTorre);
 
 }

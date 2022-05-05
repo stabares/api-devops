@@ -22,15 +22,14 @@ class CrudApplicationTests {
 
 	@Test
 	public void shouldReturnHttpCode200OnGet() throws Exception {
-		this.mockMvc.perform(get("https://api-devops.herokuapp.com/torre/detalleTorre/5")).andDo(print()).andExpect(status().isOk());
+		this.mockMvc.perform(get("http://localhost:8080/torre/detalleTorre/62745499e0ac3a2050c84ecb")).andDo(print()).andExpect(status().isOk());
 
 	}
 	@Test
 	public void assertion() throws Exception {
-		this.mockMvc.perform(get("https://api-devops.herokuapp.com/torre/detalleTorre/5"))
-			.andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isOk())
-			.andExpect(content().json("{'idTorre':5,'nombreTorre':'Torre Colpatria','cantidadAptos':1}"));
-		//.andExpect(content().json("{'data':[{'idTorre':'5','nombreTorre':'Torre Colpatria','cantidadAptos':'1'}]}"));
+		this.mockMvc.perform(get("http://localhost:8080/torre/detalleTorre/62745499e0ac3a2050c84ecb"))
+				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andExpect(content().json("{'idTorre':'62745499e0ac3a2050c84ecb','nombreTorre':'Torre Colpatria','cantidadAptos':10}"));
 	}
 }

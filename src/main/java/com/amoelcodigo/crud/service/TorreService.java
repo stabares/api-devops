@@ -13,7 +13,6 @@ import java.util.Optional;
 @Service
 @Transactional
 public class TorreService {
-
     @Autowired
     TorreRepository torreRepository;
 
@@ -22,24 +21,28 @@ public class TorreService {
         return  torreRepository.findAll();
     }
 
-    public Optional<Torre> getTorre(int idTorre){
-        return  torreRepository.findById(idTorre);
+    public Optional<Torre> getTorre(String idTorre){
+        return  torreRepository.findById(Integer.valueOf(idTorre));
     }
 
     public Optional<Torre> getByNombreTorre(String nombreTorre){
         return torreRepository.findByNombreTorre(nombreTorre);
     }
 
+    public Optional<Torre> getByIdTorre(String idTorre){
+        return torreRepository.findByIdTorre(idTorre);
+    }
+
     public void saveTorre(Torre torre){
         torreRepository.save(torre);
     }
 
-    public void deleteTorre(int idTorre){
-        torreRepository.deleteById(idTorre);
+    public void deleteTorre(String idTorre){
+        torreRepository.deleteById(Integer.valueOf(idTorre));
     }
 
-    public boolean existsByIdTorre(int idTorre){
-        return torreRepository.existsById(idTorre);
+    public boolean existsByIdTorre(String idTorre){
+        return torreRepository.existsByIdTorre(idTorre);
     }
 
     public boolean existsByNombreTorre(String nombreTorre){

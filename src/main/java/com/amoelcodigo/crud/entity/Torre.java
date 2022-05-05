@@ -1,14 +1,15 @@
 package com.amoelcodigo.crud.entity;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.persistence.*;
 
-@Entity
-@Table(name = "torre")
+@Document
 public class Torre {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idTorre;
+    @org.springframework.data.annotation.Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String idTorre;
     private String nombreTorre;
     private int cantidadAptos;
 
@@ -20,11 +21,11 @@ public class Torre {
         this.cantidadAptos = cantidadAptos;
     }
 
-    public int getIdTorre() {
+    public String getIdTorre() {
         return idTorre;
     }
 
-    public void setIdTorre(int idTorre) {
+    public void setIdTorre(String idTorre) {
         this.idTorre = idTorre;
     }
 
