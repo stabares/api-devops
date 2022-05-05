@@ -31,5 +31,8 @@ jobs:
     - name: Build with Gradle
       uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
       with:
-    - run: gradle bootRun
-    - run: gradle clean test
+        run: gradle bootRun
+    - name: Test with Gradle
+        uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
+        with:
+          run: gradle clean test
