@@ -63,7 +63,7 @@ public class TorreController {
         if(torreService.existsByNombreTorre(torreDto.getNombreTorre()))
             return new ResponseEntity(new Mensaje("Ya existe una torre con ese nombre"), HttpStatus.BAD_REQUEST);
 
-        Torre torre = new Torre(torreDto.getNombreTorre(), torreDto.getCantidadAptos());
+        Torre torre = new Torre(torreDto.getNombreTorre(), torreDto.getCantidadAptos(), "https://devopsedificiobucket.s3.us-east-2.amazonaws.com/oso.jpeg");
         torreService.saveTorre(torre);
         return new ResponseEntity(new Mensaje("Torre creada"), HttpStatus.OK);
     }
