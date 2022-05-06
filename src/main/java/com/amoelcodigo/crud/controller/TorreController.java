@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/torre")
-//@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "https://cosmic-daffodil-468a39.netlify.app/")
 @SuppressWarnings("unchecked")
 public class TorreController {
     @Autowired
