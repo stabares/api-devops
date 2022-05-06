@@ -12,13 +12,15 @@ public class Torre {
     private String idTorre;
     private String nombreTorre;
     private int cantidadAptos;
+    private String linkImagen;
 
     public Torre() {
     }
 
-    public Torre(String nombreTorre, int cantidadAptos) {
+    public Torre(String nombreTorre, int cantidadAptos, String linkImagen) {
         this.nombreTorre = nombreTorre;
         this.cantidadAptos = cantidadAptos;
+        this.linkImagen = linkImagen;
     }
 
     public String getIdTorre() {
@@ -43,5 +45,13 @@ public class Torre {
 
     public void setCantidadAptos(int cantidadAptos) {
         this.cantidadAptos = cantidadAptos;
+    }
+    
+    public String getLinkImagen() {
+        return linkImagen;
+    }
+
+    public void setLinkImagen(String nombreTorre) {
+        this.nombreTorre = linkImagen;
     }
 }
